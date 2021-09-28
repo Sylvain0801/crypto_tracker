@@ -1,0 +1,12 @@
+{% extends "base.html" %} 
+{% block body %}
+<div class="main-container" style="justify-content: flex-start;">
+  <header class="header-add">
+    <a href="{{ url_for('views.index') }}"><i class="fa fa-home"></i></a>
+    <h1>Vos gains</h1>
+  </header>
+  <section class="chart-section">
+    <img src="{{ url_for('views.visualize') }}">
+  </section>
+</div>
+{% endblock %}

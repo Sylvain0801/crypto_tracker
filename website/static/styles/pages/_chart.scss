@@ -1,0 +1,11 @@
+.chart-section {
+  margin: 10% auto 5%;
+  @media screen and (max-width: 576px) {
+    margin: 10% 0 5%;
+  }
+  img {
+    @media screen and (max-width: 576px) {
+      width: 100%;
+    }
+  }
+}

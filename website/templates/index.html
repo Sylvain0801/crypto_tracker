@@ -1,0 +1,59 @@
+{% extends "base.html" %} 
+{% block body %}
+<div class="main-container">
+  <header class="header-main">
+    <h1>Crypto Tracker</h1>
+    <div class="button-group">
+      <a href="{{ url_for('views.trend', periodicity = '1h') }}" title="Tendances"><i class="fa fa-line-chart"></i></a>
+      <a href="{{ url_for('views.index') }}" title="Recharger"><i class="fa fa-repeat"></i></a>
+      <a href="{{ url_for('views.add') }}" title="Ajouter une nouvelle monnaie"><i class="fa fa-plus"></i></a>
+    </div>
+  </header>
+	<section class="global-evolution-section">
+		<a href="{{ url_for('views.chart') }}">
+			{{ '+ ' if global_amount >= 0 else '- ' }}{{ global_amount|int|abs }} €
+		</a>
+	</section>
+	<section class="crypto-money-list">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="{{ 'flash-message ' ~ category }}">
+            <span><i class="fa fa-{{ 'close' if category == 'alert' else 'check' }}"></i></span>
+            <p>{{ message }}</p>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+		<ul>
+			{% for money in datas %}
+				<li class="crypto-money-item">
+					<div class="left-item">
+						<img
+							src="{{ 'https://s2.coinmarketcap.com/static/img/coins/32x32/' ~ money['id'] ~ '.png' }}"
+							alt="{{ money['name'] }}"
+						/>
+						<strong>{{ money['symbol'] }}&nbsp;</strong><i class="fa fa-caret-right"></i>&nbsp;{{ money['name'] }}
+					</div>
+					<div class="right-item">
+						{% set trend = money['trend'] %}
+						{% if trend < -10 %}
+							{% include "include/_arrow_down.html" %}
+						{% endif %}
+						{% if trend  < 0 %}
+							{% include "include/_arrow_down.html" %}
+						{% endif %}
+						{% if trend >= 0  %}
+							{% include "include/_arrow_up.html" %}
+						{% endif %}
+						{% if trend > 10 %}
+							{% include "include/_arrow_up.html" %}
+						{% endif %}
+						<a href="{{ url_for('views.delete', id = money['money_id']) }}"><i class="fa fa-pencil"></i></a>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+</div>
+{% endblock %}

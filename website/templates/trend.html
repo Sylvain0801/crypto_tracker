@@ -1,0 +1,46 @@
+{% extends "base.html" %} 
+{% block body %}
+<div class="main-container">
+  <header class="header-add">
+    <a href="{{ url_for('views.index') }}"><i class="fa fa-home"></i></a>
+    <h1>Tendances</h1>
+  </header>
+	<div class="periodicity-filters-group">
+		{% for key, value in filters.items() %}
+			<a href="{{ url_for('views.trend', periodicity = key) }}" class="{{ 'filter-item active' if key == periodicity else 'filter-item' }}">{{ value|safe }}</a>
+		{% endfor %}
+	</div>
+	<section class="crypto-money-list">
+		<ul>
+			{% for money in datas['data'] %}
+				<li class="crypto-money-item">
+					<div class="left-item">
+						<img
+							src="{{ 'https://s2.coinmarketcap.com/static/img/coins/32x32/' ~ money['id'] ~ '.png' }}"
+							alt="{{ money['name'] }}"
+						/>
+						<strong>{{ money['symbol'] }}&nbsp;</strong><i class="fa fa-caret-right"></i>&nbsp;{{ money['name'] }}
+					</div>
+					<div class="right-item">
+						{% set trend = money['quote']['EUR']['percent_change_' ~ periodicity] %}
+						{% if trend %}
+							{% if trend < -10 %}
+								{% include "include/_arrow_down.html" %}
+							{% endif %}
+							{% if trend  < 0 %}
+								{% include "include/_arrow_down.html" %}
+							{% endif %}
+							{% if trend >= 0  %}
+								{% include "include/_arrow_up.html" %}
+							{% endif %}
+							{% if trend > 10 %}
+								{% include "include/_arrow_up.html" %}
+							{% endif %}
+						{% endif %}
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+</div>
+{% endblock %}

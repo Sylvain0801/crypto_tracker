@@ -1,0 +1,50 @@
+{% extends "base.html" %} 
+{% block body %}
+<div class="main-container">
+  <header class="header-add">
+    <a href="{{ url_for('views.index') }}"><i class="fa fa-home"></i></a>
+    <h1>Ajouter une transaction</h1>
+  </header>
+  <section class="form-section">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="{{ 'flash-message ' ~ category }}">
+            <span><i class="fa fa-{{ 'close' if category == 'alert' else 'check' }}"></i></span>
+            <p>{{ message }}</p>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form action="" method="post" autocomplete="off">
+      <div class="form-group">
+        <label for="money_name"></label>
+        <select name="money_name" id="money_name" class="form-control-input" required>
+          <option value="">--Sélectionnez une crypto--</option>
+          {% for money in datas['data'] %}
+            <option data-price="{{ money['quote']['EUR']['price'] }}" value="{{ money['name'] }}">
+              {{ money['symbol'] }} {{ money['name'] }}
+            </option>
+          {% endfor %}
+        </select>
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="form-group">
+        <label for="money_quantity"></label>
+        <input type="text" class="form-control-input" name="money_quantity" id="money_quantity" placeholder="Quantité" pattern="^([0-9]+([.][0-9]*)?|[.][0-9]+)$" required>
+        <i class="fa fa-money"></i>
+      </div>
+      <div class="form-group">
+        <label for="money_value"></label>
+        <input type="text" class="form-control-input" name="money_value" id="money_value" placeholder="Prix d'achat" pattern="^([0-9]+([.][0-9]*)?|[.][0-9]+)$" required>
+        <i class="fa fa-euro"></i>
+      </div>
+      
+      <input type="submit" value="ajouter">
+    </form>
+  </section>
+</div>
+{% endblock %}
+{% block javascipts %}
+  <script type="text/javascript" src="{{ url_for('static', filename='js/getMoneyValue.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,380 @@
+@import 'font-awesome.css';
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@font-face {
+  font-family: "Akzidenz-Grotesk BQ";
+  src: local("Akzidenz-Grotesk BQ Bold"), local("Akzidenz-Grotesk-BQ-Bold"), url("AkzidenzGroteskBQ-Bold.woff2") format("woff2"), url("AkzidenzGroteskBQ-Bold.woff") format("woff"), url("AkzidenzGroteskBQ-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #efefef;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  background-color: #100f0f;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+}
+@media screen and (max-width: 576px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.main-container {
+  margin: 2em auto;
+  width: 750px;
+  height: calc(100vh - 40px);
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(239, 239, 239, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media screen and (max-width: 576px) {
+  .main-container {
+    box-shadow: none;
+    margin: 0 auto;
+  }
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 40px #707070 inset !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #CCCCCC;
+  background-color: #F1F1F1;
+  border-radius: 2.5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888888;
+  border-radius: 2.5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.7;
+}
+
+header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5em;
+}
+
+.flash-message {
+  width: 100%;
+  height: 75px;
+  border-radius: 5px;
+  font-size: 1.3em;
+  box-shadow: 0 3px 6px rgba(239, 239, 239, 0.3);
+  padding: 0.5em;
+  visibility: visible;
+  display: flex;
+  align-items: center;
+  opacity: 0.9;
+  -webkit-animation: invisible 0.3s ease-in 5s forwards;
+          animation: invisible 0.3s ease-in 5s forwards;
+}
+@media screen and (max-width: 576px) {
+  .flash-message {
+    height: 50px;
+  }
+}
+.flash-message span {
+  height: 1.8em;
+  width: 1.8em;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-color: rgba(16, 15, 15, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flash-message span .fa.fa-close {
+  margin-bottom: 0.125rem;
+}
+.flash-message.alert {
+  background-color: #BF0B3B;
+}
+.flash-message.success {
+  background-color: #238C2A;
+}
+@-webkit-keyframes invisible {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+@keyframes invisible {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+
+.global-evolution-section {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+@media screen and (max-width: 576px) {
+  .global-evolution-section {
+    height: 100px;
+  }
+}
+.global-evolution-section a {
+  color: #efefef;
+  text-decoration: none;
+  font-size: 3.5em;
+}
+@media screen and (max-width: 576px) {
+  .global-evolution-section a {
+    font-size: 3em;
+  }
+}
+
+.crypto-money-list {
+  margin: 0 10% 10%;
+  height: 80vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+@media screen and (max-width: 576px) {
+  .crypto-money-list {
+    margin: 0 5% 10%;
+  }
+}
+.crypto-money-list .crypto-money-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2em;
+  padding: 20px 10px;
+  border-bottom: 1px solid #2C2828;
+}
+.crypto-money-list .crypto-money-item .left-item {
+  display: flex;
+  align-items: center;
+}
+.crypto-money-list .crypto-money-item .left-item img {
+  width: 2em;
+  height: 2em;
+  margin-right: 1em;
+  border-radius: 50%;
+}
+.crypto-money-list .crypto-money-item .right-item {
+  display: flex;
+  align-items: center;
+}
+.crypto-money-list .crypto-money-item .right-item a {
+  text-decoration: none;
+  color: #efefef;
+  font-size: 1.2em;
+  margin-left: 1em;
+  vertical-align: super;
+}
+.crypto-money-list .crypto-money-item .right-item svg {
+  margin-left: 0.3em;
+}
+
+header.header-main h1 {
+  font-family: "Akzidenz-Grotesk BQ";
+  font-weight: 500;
+  font-size: 2.5em;
+}
+@media screen and (max-width: 576px) {
+  header.header-main h1 {
+    font-size: 2em;
+  }
+}
+header.header-main .button-group {
+  display: flex;
+  align-items: center;
+}
+header.header-main .button-group a {
+  text-decoration: none;
+  color: #efefef;
+  font-size: 2.2em;
+  padding-left: 1em;
+}
+@media screen and (max-width: 576px) {
+  header.header-main .button-group a {
+    font-size: 1.6em;
+    padding-left: 0.7em;
+  }
+}
+header.header-main .button-group a i {
+  vertical-align: middle;
+}
+header.header-main .button-group a i::before {
+  vertical-align: middle;
+}
+
+header.header-add {
+  position: relative;
+}
+header.header-add a {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1em;
+  text-decoration: none;
+  color: #efefef;
+  font-size: 2.4em;
+}
+header.header-add h1 {
+  font-weight: bold;
+  font-size: 2em;
+  margin: 0 auto;
+}
+
+.form-section {
+  width: 75%;
+  margin: 0 auto 10%;
+  height: 80vh;
+}
+@media screen and (max-width: 576px) {
+  .form-section {
+    width: 90%;
+  }
+}
+.form-section .form-group {
+  position: relative;
+}
+.form-section .form-group input.form-control-input, .form-section .form-group select.form-control-input {
+  display: block;
+  height: 75px;
+  width: 100%;
+  margin: 60px 0;
+  border-radius: 5px;
+  border: 1px solid #efefef;
+  background: transparent;
+  color: #efefef;
+  font-size: 1.5em;
+  padding: 0 2.5em;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.form-section .form-group input.form-control-input:focus, .form-section .form-group select.form-control-input:focus {
+  box-shadow: 0 0 0 4px white;
+  color: #efefef;
+}
+.form-section .form-group input.form-control-input:valid, .form-section .form-group select.form-control-input:valid {
+  background-color: #707070;
+}
+@media screen and (max-width: 576px) {
+  .form-section .form-group input.form-control-input, .form-section .form-group select.form-control-input {
+    height: 50px;
+  }
+}
+.form-section .form-group select:focus {
+  background-color: #707070;
+}
+.form-section .form-group i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0.5em;
+  font-size: 2em;
+}
+.form-section input[type=submit] {
+  width: 80%;
+  height: 100px;
+  display: block;
+  background-color: #efefef;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 2em;
+  margin: 200px auto 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(239, 239, 239, 0.3);
+  transition: 0.2s;
+}
+.form-section input[type=submit]:hover {
+  background-color: #707070;
+}
+@media screen and (max-width: 576px) {
+  .form-section input[type=submit] {
+    margin-top: 150px;
+    height: 60px;
+  }
+}
+
+.chart-section {
+  margin: 10% auto 5%;
+}
+@media screen and (max-width: 576px) {
+  .chart-section {
+    margin: 10% 0 5%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .chart-section img {
+    width: 100%;
+  }
+}
+
+.periodicity-filters-group {
+  margin: 1.5em 10% 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 5px;
+}
+@media screen and (max-width: 576px) {
+  .periodicity-filters-group {
+    margin: 1.5em 5% 0;
+  }
+}
+.periodicity-filters-group a.filter-item {
+  color: #efefef;
+  text-decoration: none;
+  text-align: center;
+  padding: 5px;
+  flex: 1;
+  border-bottom: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: inset 0 1px 3px rgba(239, 239, 239, 0.3);
+  background-color: #333333;
+}
+.periodicity-filters-group a.filter-item.active {
+  box-shadow: 0 3px 0 #100f0f, 0 -3px 6px rgba(239, 239, 239, 0.5);
+  background-color: #100f0f;
+  font-weight: bold;
+}/*# sourceMappingURL=index.css.map */
